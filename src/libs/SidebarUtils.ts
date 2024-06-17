@@ -119,7 +119,7 @@ function getOrderedReportIDs(
 
         if (currentUserAccountID && AccountUtils.isAccountIDOddNumber(currentUserAccountID) && participantAccountIDs.includes(CONST.ACCOUNT_ID.NOTIFICATIONS)) {
             if (isInFocusMode) {
-                return ReportUtils.isUnread(report);
+                return ReportUtils.isUnread(report) && report.notificationPreference !== CONST.REPORT.NOTIFICATION_PREFERENCE.MUTE;
             }
             return true;
         }
