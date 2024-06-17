@@ -118,6 +118,9 @@ function getOrderedReportIDs(
         const participantAccountIDs = Object.keys(report?.participants ?? {}).map(Number);
 
         if (currentUserAccountID && AccountUtils.isAccountIDOddNumber(currentUserAccountID) && participantAccountIDs.includes(CONST.ACCOUNT_ID.NOTIFICATIONS)) {
+            if (isInFocusMode) {
+                return ReportUtils.isUnread(report);
+            }
             return true;
         }
 
